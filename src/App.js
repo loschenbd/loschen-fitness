@@ -9,6 +9,7 @@ const base = new Airtable({ apiKey: process.env.REACT_APP_AIRTABLE_KEY }).base(p
 
 function App() {
     const [exercises, setExcerises] = useState([])
+
     useEffect(() => {
         base('Exercises')
             .select({ view: "Grid view" })
@@ -24,9 +25,7 @@ function App() {
           <h1>Exercises</h1>
         {exercises.map(exercise => (
             <Exercise
-                key={exercise.id}
                 exercise={exercise}
-                name={exercise.name}
             />
         ))}
 
