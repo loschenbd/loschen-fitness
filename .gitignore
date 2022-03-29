@@ -2,6 +2,7 @@
 
 #Webstorm
 workspace.xml
+.idea
 
 # dependencies
 /node_modules
