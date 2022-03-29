@@ -3,7 +3,7 @@ import React from "react";
 const Exercise = ({ exercise }) => {
   return (
     <div className="exercise">
-      <h3>{name}</h3>
+      <h3>Name</h3>
         <p>Reps</p>
         <ul>
             <li>Tags</li>

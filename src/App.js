@@ -29,7 +29,7 @@ function App() {
   return (
     <div className="App">
           <h1>Exercises</h1>
-          <Exercise name={record.name}/>
+          <Exercise />
     </div>
   );
 }
