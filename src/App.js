@@ -8,28 +8,28 @@ const base = new Airtable({ apiKey: process.env.REACT_APP_AIRTABLE_KEY }).base(p
 );
 
 function App() {
+    const [exercises, setExcerises] = useState([])
     useEffect(() => {
-        base('Exercises').select({
-            view: "Grid view"
-        }).eachPage(function page(records, fetchNextPage) {
-
-            records.forEach(function(record) {
-                console.log('Retrieved', record.get('Name'));
+        base('Exercises')
+            .select({ view: "Grid view" })
+            .eachPage((records, fetchNextPage) => {
+                setExcerises(records)
+                console.log(records);
+                fetchNextPage();
             });
-
-            // To fetch the next page of records, call `fetchNextPage`.
-            // If there are more records, `page` will get called again.
-            // If there are no more records, `done` will get called.
-            fetchNextPage();
-
-        }, function done(err) {
-            if (err) { console.error(err); return; }
-        });
     }, []);
+
   return (
     <div className="App">
           <h1>Exercises</h1>
-          <Exercise />
+        {exercises.map(exercise => (
+            <Exercise
+                key={exercise.id}
+                exercise={exercise}
+                name={exercise.name}
+            />
+        ))}
+
     </div>
   );
 }
