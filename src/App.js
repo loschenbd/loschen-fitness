@@ -10,10 +10,8 @@ const base = new Airtable({ apiKey: process.env.REACT_APP_AIRTABLE_KEY }).base(p
 function App() {
     useEffect(() => {
         base('Exercises').select({
-            // Selecting the first 3 records in Grid view:
             view: "Grid view"
         }).eachPage(function page(records, fetchNextPage) {
-            // This function (`page`) will get called for each page of records.
 
             records.forEach(function(record) {
                 console.log('Retrieved', record.get('Name'));
@@ -31,7 +29,7 @@ function App() {
   return (
     <div className="App">
           <h1>Exercises</h1>
-          <Exercise />
+          <Exercise name={record.name}/>
     </div>
   );
 }
