@@ -6,15 +6,17 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <React.StrictMode>
-      <Auth0Provider
+    <React.StrictMode>
+    <Auth0Provider
           domain="smartlemon.us.auth0.com"
           clientId="J5LucPrhs0peRybyu15p8F1NlVf2LoaM"
           redirectUri={window.location.origin}
+          audience="https://smartlemon.us.auth0.com/api/v2/"
+          scope="read:current_user update:current_user_metadata"
       >
         <App />
       </Auth0Provider>
-  </React.StrictMode>,
+    </React.StrictMode>,
   document.getElementById('root')
 );
 
